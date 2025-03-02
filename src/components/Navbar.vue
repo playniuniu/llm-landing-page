@@ -6,6 +6,14 @@ const isMenuOpen = ref(false)
 const toggleMenu = () => {
   isMenuOpen.value = !isMenuOpen.value
 }
+
+const scrollToSection = (sectionId: string) => {
+  const element = document.getElementById(sectionId)
+  if (element) {
+    element.scrollIntoView({ behavior: 'smooth' })
+    isMenuOpen.value = false // 点击后关闭移动菜单
+  }
+}
 </script>
 
 <template>
@@ -26,10 +34,10 @@ const toggleMenu = () => {
 
         <!-- Desktop Menu -->
         <div class="hidden md:flex items-center space-x-8">
-          <a href="#features" class="text-gray-700 hover:text-cofco-primary font-medium py-4">产品特点</a>
-          <a href="#usecases" class="text-gray-700 hover:text-cofco-primary font-medium py-4">应用场景</a>
-          <a href="#pricing" class="text-gray-700 hover:text-cofco-primary font-medium py-4">价格方案</a>
-          <a href="#contact" class="bg-cofco-primary text-white px-4 py-2 rounded-md hover:bg-opacity-90 transition-all">
+          <a href="#features" @click.prevent="scrollToSection('features')" class="text-gray-700 hover:text-cofco-primary font-medium py-4">产品特点</a>
+          <a href="#usecases" @click.prevent="scrollToSection('usecases')" class="text-gray-700 hover:text-cofco-primary font-medium py-4">应用场景</a>
+          <a href="#pricing" @click.prevent="scrollToSection('pricing')" class="text-gray-700 hover:text-cofco-primary font-medium py-4">价格方案</a>
+          <a href="#contact" @click.prevent="scrollToSection('contact')" class="bg-cofco-primary text-white px-4 py-2 rounded-md hover:bg-opacity-90 transition-all">
             立即试用
           </a>
         </div>
@@ -49,10 +57,10 @@ const toggleMenu = () => {
 
       <!-- Mobile Menu -->
       <div v-if="isMenuOpen" class="md:hidden mt-4">
-        <a href="#features" class="block py-4 text-gray-700 hover:text-cofco-primary">产品特点</a>
-        <a href="#usecases" class="block py-4 text-gray-700 hover:text-cofco-primary">应用场景</a>
-        <a href="#pricing" class="block py-4 text-gray-700 hover:text-cofco-primary">价格方案</a>
-        <a href="#contact" class="block py-2 mt-3 bg-cofco-primary text-white px-4 rounded-md hover:bg-opacity-90 transition-all w-full text-center">
+        <a href="#features" @click.prevent="scrollToSection('features')" class="block py-4 text-gray-700 hover:text-cofco-primary">产品特点</a>
+        <a href="#usecases" @click.prevent="scrollToSection('usecases')" class="block py-4 text-gray-700 hover:text-cofco-primary">应用场景</a>
+        <a href="#pricing" @click.prevent="scrollToSection('pricing')" class="block py-4 text-gray-700 hover:text-cofco-primary">价格方案</a>
+        <a href="#contact" @click.prevent="scrollToSection('contact')" class="block py-2 mt-3 bg-cofco-primary text-white px-4 rounded-md hover:bg-opacity-90 transition-all w-full text-center">
           立即试用
         </a>
       </div>

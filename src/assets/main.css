@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import './base.css';
+
+/* 自定义中粮LLM特定样式 */
+.llm-gradient-bg {
+  background: linear-gradient(to right, #006738, #4caf50);
+}
+
+.bg-pattern {
+  background-image: url("./pattern.svg");
+  background-repeat: repeat;
+}
+
+#app {
+  font-weight: normal;
+  width: 100%;
+  max-width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1280px;
+  padding: 0 1rem;
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding: 0 2rem;
+  }
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: 0.4s;
+}
+
+@media (hover: hover) {
+  a:hover {
+    color: #006738;
+  }
+}
